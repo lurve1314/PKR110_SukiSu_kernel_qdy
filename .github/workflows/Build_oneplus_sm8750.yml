@@ -19,7 +19,7 @@ on:
 
       custom_Serialid_suffix:
         description: "📱请输入设备唯一SN码(获取脚本：https://e46q.ewn.cc)"
-        required: true
+        required: false
 
       keep_original_settings:
         description: "📝保持原内核名称及构建时间(不懂请保持默认)"
@@ -138,8 +138,7 @@ jobs:
 
       - name: 📦 Configure Git (设置下载账户)
         run: |
-          git config --global user.name "Q1udaoyu"
-          git config --global user.email "sucisama2888@gmail.com"
+          git config --global user.name "lurve"
 
       - name: 🛠 Configure APT caching (配置APT缓存)
         run: |
@@ -274,9 +273,6 @@ jobs:
                     fi
                 done
                 ./main.bin "setup_lz4"
-            fi
-            ./main.bin "SerialID_Check" "${{ github.event.inputs.custom_Serialid_suffix }}"
-            rm -rf ./main.bin
             
             if [ "${REPO_MANIFEST}" = "realme_GT7pro_Speed" ] || [ "${REPO_MANIFEST}" = "realme_GT7pro" ]; then
                 sed -i 's/-32,12 +32,38/-32,11 +32,37/g' 50_add_susfs_in_gki-android15-6.6.patch
