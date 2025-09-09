@@ -135,6 +135,7 @@ jobs:
       - name: 📦 Configure Git (设置下载账户)
         run: |
           git config --global user.name "lurve"
+          git config --global user.email "lurve@love.com"
 
       - name: 🛠 Configure APT caching (配置APT缓存)
         run: |
